@@ -1,48 +1,72 @@
-#include <stdio.h>
+#include "shell.h"
 
 /**
- * my_function - Example function
- * @param1: Description of param1
- * @param2: Description of param2
- * Return: Description of the return value
+ * _strncpy - copies a string
+ * @dest: the destination string to be copied to
+ * @src: the source string
+ * @n: the number of characters to be copied
+ *
+ * Return: the destination string
  */
-int my_function(int param1, int param2)
+char *_strncpy(char *dest, char *src, int n)
 {
-    /* Code here */
-    if (param1 > param2) {
-        /* Handle the case */
-        return param1;
-    } else {
-        /* Handle the other case */
-        return param2;
-    }
+	int i = 0;
+	char *s = dest;
+
+	while (src[i] != '\0' && i < n - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (s);
 }
 
 /**
- * another_function - Another example function
- * @param: Description of the parameter
- * Return: Description of the return value
+ * _strncat - concatenates two strings
+ * @dest: the first string
+ * @src: the second string
+ * @n: the maximum number of characters to concatenate
+ *
+ * Return: the concatenated string
  */
-char *another_function(char *param)
+char *_strncat(char *dest, char *src, int n)
 {
-    /* Code here */
-    return param;
+	int i = 0;
+	int j = 0;
+	char *s = dest;
+
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < n)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (s);
 }
 
 /**
- * main - Main function
- * Return: Always 0
+ * _strchr - locates a character in a string
+ * @s: the string to be parsed
+ * @c: the character to look for
+ *
+ * Return: a pointer to the first occurrence of the character in the string
+ * or NULL if the character is not found
  */
-int main(void)
+char *_strchr(char *s, char c)
 {
-    int result;
-    char *str;
+	do {
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
-    result = my_function(10, 20);
-    str = another_function("Hello, world!");
-
-    /* Further code */
-
-    return 0;
+	return (NULL);
 }
 
